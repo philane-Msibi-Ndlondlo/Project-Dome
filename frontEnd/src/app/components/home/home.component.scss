@@ -1,0 +1,35 @@
+.container h3 {
+  padding-left: 50px;
+}
+
+mat-card-actions {
+
+  text-align: right;
+  padding-right: 1em;
+
+  button {
+    margin-right: 10px;
+  }
+}
+
+.project-grid {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  padding: 1em;
+
+  mat-card {
+    padding: .5em;
+  }
+}
+
+.header {
+  padding: 15px 20px;
+  span {
+    font-size: 1.4rem;
+  }
+  button {
+    float: right;
+    margin-top: -5px;
+  }
+}

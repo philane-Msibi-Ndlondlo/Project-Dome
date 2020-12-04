@@ -1,0 +1,152 @@
+<app-navbar></app-navbar>
+<section class="container">
+  <div class="header">
+    <span>APIs Repository</span>
+    <button mat-mini-fab
+      matTooltip="Add new API Repository"
+      aria-label="Button that displays a tooltip when focused or hovered over"
+      (click)="openNewApiDialog()">
+      <mat-icon>
+        add
+      </mat-icon>
+    </button>
+  </div>
+  <mat-divider></mat-divider>
+
+  <div class="project-grid">
+      <mat-card *ngFor="let repository of repositories.data">
+          <mat-card-header>
+            <h4>{{ repository.apiRepoName }}</h4>
+          </mat-card-header>
+          <mat-card-content>
+            <p>{{ repository.apiRepoDescription }} </p>
+          </mat-card-content>
+          <mat-card-footer>
+            <mat-card-actions>
+              <button mat-mini-fab
+              matTooltip="Open API Project"
+              aria-label="Button that displays a tooltip when focused or hovered over"
+              (click)="viewRepo(repository._id)">
+                <mat-icon>visibility</mat-icon>
+              </button>
+              <button mat-mini-fab
+              matTooltip="Edit API Project"
+              aria-label="Button that displays a tooltip when focused or hovered over">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-mini-fab
+              matTooltip="Delete API Project"
+              aria-label="Button that displays a tooltip when focused or hovered over"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+            </mat-card-actions>
+          </mat-card-footer>
+        </mat-card>
+  </div>
+
+  <div class="header">
+      <span>Applications Repository</span>
+      <button mat-mini-fab
+      matTooltip="Add new Application Repository"
+              aria-label="Button that displays a tooltip when focused or hovered over"
+              >
+        <mat-icon>
+          add
+        </mat-icon>
+      </button>
+    </div>
+    <mat-divider></mat-divider>
+
+    <div class="project-grid">
+        <mat-card>
+            <mat-card-header>
+              <h4>Usage Link Application</h4>
+            </mat-card-header>
+            <mat-card-content>
+              <p>API to do operations with finding out a fibre's usage and state of being.</p>
+            </mat-card-content>
+            <mat-card-footer>
+              <mat-card-actions>
+                <button mat-mini-fab>
+                  <mat-icon>visibility</mat-icon>
+                </button>
+                <button mat-mini-fab>
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-mini-fab>
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </mat-card-actions>
+            </mat-card-footer>
+          </mat-card>
+
+          <mat-card>
+            <mat-card-header>
+              <h4>Off Boarding Application</h4>
+            </mat-card-header>
+            <mat-card-content>
+              <p>API to do operations of fetching information regarding a new employee for onboarding.</p>
+            </mat-card-content>
+            <mat-card-footer>
+              <mat-card-actions>
+                <button mat-mini-fab>
+                  <mat-icon>visibility</mat-icon>
+                </button>
+                <button mat-mini-fab>
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-mini-fab>
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </mat-card-actions>
+            </mat-card-footer>
+          </mat-card>
+
+      <mat-card>
+        <mat-card-header>
+          <h4>Meeting Attendance Application</h4>
+        </mat-card-header>
+        <mat-card-content>
+          <p>API to do operations with finding out a fibre's usage and state of being.</p>
+        </mat-card-content>
+        <mat-card-footer>
+          <mat-card-actions>
+            <button mat-mini-fab>
+              <mat-icon>visibility</mat-icon>
+            </button>
+            <button mat-mini-fab>
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-mini-fab>
+              <mat-icon>delete</mat-icon>
+            </button>
+          </mat-card-actions>
+        </mat-card-footer>
+      </mat-card>
+
+      <mat-card>
+        <mat-card-header>
+          <h4>Onborading Application</h4>
+        </mat-card-header>
+        <mat-card-content>
+          <p>API to do operations of fetching information regarding a new employee for onboarding.</p>
+        </mat-card-content>
+        <mat-card-footer>
+          <mat-card-actions>
+            <button mat-mini-fab>
+              <mat-icon>visibility</mat-icon>
+            </button>
+            <button mat-mini-fab>
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-mini-fab>
+              <mat-icon>delete</mat-icon>
+            </button>
+          </mat-card-actions>
+        </mat-card-footer>
+      </mat-card>
+    </div>
+
+</section>
+

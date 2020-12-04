@@ -1,0 +1,224 @@
+<app-navbar (logOutEvent)="logUserout()"></app-navbar>
+<mat-drawer-container class="example-container">
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+      <h2>{{ Apirepository.apiRepoName }}</h2>
+      <h6>{{ Apirepository.apiRepoDescription }}</h6>
+        <mat-accordion class="example-headers-align">
+            <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <h4 [matBadge]="Apirepository.notes.length" matBadgeOverlap="false">Notes</h4>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <mat-list role="list" *ngFor="let note of Apirepository.notes; let i = index">
+                <h4 mat-line>{{(i+1) + ' ' + note.title}}</h4>
+                <p mat-line> {{note.note}} </p>
+                <mat-divider></mat-divider>
+              </mat-list>
+              <mat-action-row>
+                <button mat-button color="primary" (click)="nextStep()">Next</button>
+              </mat-action-row>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <h4 [matBadge]="Apirepository.alerts.length" matBadgeOverlap="false">Alerts</h4>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <mat-list role="list" *ngFor="let alert of Apirepository.alerts; let i = index">
+                <h4 mat-line>{{(i+1) + ' ' + alert.title}}</h4>
+                <p mat-line> {{alert.alert}} </p>
+                <mat-divider></mat-divider>
+              </mat-list>
+              <mat-action-row>
+                <button mat-button color="warn" (click)="prevStep()">Previous</button>
+                <button mat-button color="primary" (click)="nextStep()">Next</button>
+              </mat-action-row>
+            </mat-expansion-panel>
+            <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <h4 matBadge="7" matBadgeOverlap="false">Files</h4>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <mat-action-row>
+                <button mat-button color="warn" (click)="prevStep()">Previous</button>
+                <button mat-button color="primary" (click)="nextStep()">Next</button>
+              </mat-action-row>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel [expanded]="step === 4" (opened)="setStep(4)">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <h4 [matBadge]="developersCount" matBadgeOverlap="false">Developers</h4>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <mat-list role="list" *ngFor="let developer of Apirepository.apiRepoDevelopers">
+                <mat-list-item role="listitem">{{ developer.name }}</mat-list-item>
+              </mat-list>
+
+              <mat-action-row>
+                <button mat-button color="warn" (click)="prevStep()">Previous</button>
+                <button mat-button color="primary" (click)="nextStep()">Next</button>
+              </mat-action-row>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel [expanded]="step === 5" (opened)="setStep(4)">
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    <h4 matBadge="3" matBadgeOverlap="false">Endpoints</h4>
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-list role="list" class="endpointList">
+                  <mat-list-item role="listitem">GET: http://localhost:4534/api/linkUsage/GetProducts</mat-list-item>
+                  <mat-list-item role="listitem">POST: http://localhost:4534/api/linkUsage/Products</mat-list-item>
+                  <mat-list-item role="listitem">PUT: http://localhost:4534/api/linkUsage/Products</mat-list-item>
+                </mat-list>
+
+                <mat-action-row>
+                  <button mat-button color="warn" (click)="prevStep()">Previous</button>
+                  <button mat-button color="primary" (click)="nextStep()">Next</button>
+                </mat-action-row>
+              </mat-expansion-panel>
+
+            <mat-expansion-panel [expanded]="step === 6" (opened)="setStep(4)">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <h4>Upload</h4>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <form>
+                <input type="file" name="file" id="file" #file>
+                <br/><br/>
+                <button mat-raised-button color="primary" id="uploadBtn" name="uploadBtn" #loadBtn>Upload</button>
+              </form>
+              <mat-action-row>
+                <button mat-button color="warn" (click)="prevStep()">Previous</button>
+                <button mat-button color="primary" (click)="nextStep()">End</button>
+              </mat-action-row>
+            </mat-expansion-panel>
+
+          </mat-accordion>
+    </mat-drawer>
+
+    <div class="example-sidenav-content">
+      <div>
+          <button type="button" mat-button (click)="drawer.toggle()">
+              <mat-icon>
+                  keyboard_arrow_right
+              </mat-icon>
+            </button>
+      </div>
+      <mat-accordion class="example-headers-align">
+          <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                GetProducts
+              </mat-panel-title>
+              <mat-panel-description>
+                Function to get the products
+                <mat-icon>book</mat-icon>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <div>
+                <textarea readonly class="textShow" readonly>
+                  const url = 'http://localhost:4534/api/linkUsage/GetProducts';
+
+                  function GetProducts(){
+
+                    fetch(url)
+                    .then(res => es.json())
+                    .then(res => res)
+                    .catch(err => err);
+                  }
+                </textarea>
+              </div>
+
+            <mat-action-row>
+              <button mat-icon-button color="primary">
+                <mat-icon>done_outline</mat-icon>
+              </button>
+              <button mat-icon-button color="primary">
+                <mat-icon>edit</mat-icon>
+              </button>
+            </mat-action-row>
+          </mat-expansion-panel>
+
+          <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                GetProducts
+              </mat-panel-title>
+              <mat-panel-description>
+                Function to get the products
+                <mat-icon>book</mat-icon>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <div>
+                <textarea readonly class="textShow">
+                  const url = 'http://localhost:4534/api/linkUsage/GetProducts';
+
+                  function GetProducts(){
+
+                    fetch(url)
+                    .then(res => es.json())
+                    .then(res => res)
+                    .catch(err => err);
+                  }
+                </textarea>
+              </div>
+
+            <mat-action-row>
+              <button mat-icon-button color="primary">
+                <mat-icon>done_outline</mat-icon>
+              </button>
+              <button mat-icon-button color="primary">
+                <mat-icon>edit</mat-icon>
+              </button>
+            </mat-action-row>
+          </mat-expansion-panel>
+
+          <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                GetPrices
+              </mat-panel-title>
+              <mat-panel-description>
+                Function to get the products' prices
+                <mat-icon>book</mat-icon>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <div>
+                <textarea readonly class="textShow">
+                  const url = 'http://localhost:4534/api/linkUsage/GetProducts';
+
+                  function GetProducts(){
+
+                    fetch(url)
+                    .then(res => es.json())
+                    .then(res => res)
+                    .catch(err => err);
+                  }
+                </textarea>
+              </div>
+
+            <mat-action-row>
+              <button mat-icon-button color="primary">
+                <mat-icon>done_outline</mat-icon>
+              </button>
+              <button mat-icon-button color="primary">
+                <mat-icon>edit</mat-icon>
+              </button>
+            </mat-action-row>
+          </mat-expansion-panel>
+
+        </mat-accordion>
+
+    </div>
+
+  </mat-drawer-container>
+

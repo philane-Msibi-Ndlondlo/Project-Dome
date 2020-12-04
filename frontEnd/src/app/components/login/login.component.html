@@ -1,0 +1,32 @@
+<section class="cover">
+  <span>
+      <a routerLink="/" mat-button style="color: #fff;">ProjectDome</a>
+  </span>
+  <form [formGroup]="loginForm" class="example-form" autocomplete="off" (ngSubmit)="onLoginUser(loginForm)">
+    <h1>Login</h1>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Email" formControlName="email">
+      <mat-hint align="end">E.g. Example@test.com</mat-hint>
+      <mat-error *ngIf="loginForm.touched && loginForm.controls.email.errors?.required">Email is required.</mat-error>
+      <mat-error *ngIf="loginForm.touched && loginForm.controls.email.errors?.email">Please enter a valid email.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input type="password" matInput placeholder="Password" formControlName="password">
+      <mat-hint align="end">Your personal password</mat-hint>
+      <mat-error *ngIf="loginForm.touched && loginForm.controls.password.errors?.required">Password is required.</mat-error>
+      <mat-error *ngIf="loginForm.touched && loginForm.controls.password.errors?.minlength">Password must contain 8 to 15 characters.</mat-error>
+      <mat-error *ngIf="loginForm.touched && loginForm.controls.password.errors?.maxlength">Password must contain 8 to 15 characters.</mat-error>
+    </mat-form-field>
+    <br/><br/>
+
+    <button mat-raised-button color="primary" [disabled]="loginForm.invalid">
+      <mat-icon>https</mat-icon>
+      Login
+    </button>
+    <button mat-raised-button color="warn" routerLink="/register">
+      <mat-icon>assignment_ind</mat-icon>
+      Create an account
+    </button>
+  </form>
+</section>
